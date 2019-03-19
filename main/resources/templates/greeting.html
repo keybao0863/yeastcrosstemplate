@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Getting Started: Handling Form Submission</title>
+</head>	
+
+<body>
+	<h1>Input strain information to be added to the database</h1>
+    <form action="#" th:action="@{/addstrain}" th:object="${strain}" method="post">
+        <p>Strain name: <input type="text" th:field="*{name}" /></p>
+        
+        <p>Mat:  
+	        <select th:field="*{mat}">
+	        	<option value="smt0">smt0</option>
+	  			<option value="h+">h+</option>
+	  			<option value="h-">h-</option>
+	  			<option value="h90">h90</option>
+	        </select>
+        </p>
+        
+        <p>leu1:  
+	        <select th:field="*{leu1}">
+	        	<option value="leu1">leu1</option>
+	  			<option value="">wild-type</option>
+	        </select>
+        </p>
+        
+        <p>his2:  
+	        <select th:field="*{his2}">
+	        	<option value="his2">his2</option>
+	  			<option value="">wild-type</option>
+	        </select>
+        </p>
+        
+        <p>ura4:  
+	        <select th:field="*{ura4}">
+	        	<option value="ura4 ds/e">ura4 ds/e</option>
+	  			<option value="ura4 d18">ura4 d18</option>
+	  			<option value="ura4 ds/e or d18">ura4 ds/e or d18</option>
+	  			<option value="">wild-type</option>
+	        </select>
+        </p>
+        
+        <p>ade6:  
+	        <select th:field="*{ade6}">
+	        	<option value="ade6-210">ade6-210</option>
+	        	<option value="ade6-216">ade6-216</option>
+	        	<option value="ade6-?">ade6-?</option>
+	  			<option value="">wild-type</option>
+	        </select>
+        </p>
+        
+        <p>Strain name: <input type="text" th:field="*{additionalGenotype}" /></p>
+        
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+</body>
+</html>	

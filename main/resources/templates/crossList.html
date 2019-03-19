@@ -1,0 +1,66 @@
+<!DOCTYPE heml>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Getting Started: Handling Form Submission</title>
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="/custom.js"></script>
+</head>
+
+
+<div th:replace="fragments/header :: header">
+      
+      <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Static header</a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Home</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+<div class="container">
+	<form action="#" th:action="@{/crosstemplate}" th:object="${cross}" method="post">
+    <table id="myTable" class=" table order-list">
+    <thead>
+        <tr>
+            <td>Strain 1</td>
+            <td>Strain 2</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each = "cross, itemStat : *{crosses}">
+         	
+            <td class="col-sm-3">
+                <input type="text" name="Strain 1" class="form-control"  th:field="*{crosses[__${itemStat.index}__].firstStrainName}" />
+            </td>
+            <td class="col-sm-3">
+                <input type="text" name="Strain 2"  class="form-control"  th:field="*{crosses[__${itemStat.index}__].secondStrainName}"/>
+            </td>
+            
+        </tr>
+    </tbody>
+<!--     <tfoot> -->
+<!--         <tr> -->
+<!--             <td colspan="5" style="text-align: left;"> -->
+<!--                 <input type="button" class="btn btn-lg btn-block " id="addrow" value="Add Row" /> -->
+                
+<!--             </td> -->
+<!--         </tr> -->
+<!--         <tr> -->
+<!--         </tr> -->
+<!--     </tfoot> -->
+    
+</table>
+<p><input type="submit" class="btn btn-lg btn-block " value="Submit" /> <input type="reset" class="btn btn-lg btn-block " value="Reset" /></p>
+ </form>
+</div>
+</html>
