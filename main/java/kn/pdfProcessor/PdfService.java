@@ -66,7 +66,7 @@ public class PdfService {
 		//font
 		BaseFont bf = BaseFont.createFont("/arial.ttf", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
 		bf.setSubset(true);
-		Font f=new Font(FontFamily.TIMES_ROMAN,9.0f);
+		Font f=new Font(bf,9.0f);
 		
 		//adding text and catch if strain is not found
 		try {
