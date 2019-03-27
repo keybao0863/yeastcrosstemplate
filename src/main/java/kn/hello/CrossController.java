@@ -23,7 +23,7 @@ import kn.yeast.Master;
 import kn.yeast.YeastService;
 
 @Controller
-public class GreetingController {
+public class CrossController {
 	@Autowired
 	private YeastService yeastService;
 	@Autowired
