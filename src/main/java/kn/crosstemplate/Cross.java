@@ -1,4 +1,4 @@
-package kn.hello;
+package kn.crosstemplate;
 
 public class Cross {
 	    

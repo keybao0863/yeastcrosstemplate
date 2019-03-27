@@ -1,4 +1,4 @@
-package kn.hello;
+package kn.crosstemplate;
 
 import java.util.ArrayList;
 import java.util.List;
