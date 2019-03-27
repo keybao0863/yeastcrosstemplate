@@ -20,6 +20,7 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.Font.FontFamily;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfImportedPage;
 import com.itextpdf.text.pdf.PdfReader;
@@ -64,7 +65,10 @@ public class PdfService {
 		// for example... 
 		
 		//font
-		Font f=new Font(FontFamily.TIMES_ROMAN,9.0f);
+		BaseFont bf = BaseFont.createFont("/arial.ttf", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+		bf.setSubset(true);
+		
+		Font f=new Font(bf,9.0f);
 		
 		//adding text and catch if strain is not found
 		try {
