@@ -41,7 +41,9 @@ public class PdfService {
 	private YeastService yeastSerivce;
 	
 	
-	private ByteArrayOutputStream append(Master firstStrain, Master secondStrain) throws DocumentException, IOException {
+	private ByteArrayOutputStream append(String firstStrainName, String secondStrainName) throws DocumentException, IOException {
+		
+		
 		
 		// Create output PDF
 		Document document = new Document(PageSize.A4);
@@ -70,14 +72,20 @@ public class PdfService {
 		
 		Font f=new Font(bf,9.0f);
 		
+		
+		//get the strains
+		Master firstStrain = yeastSerivce.getStrain(firstStrainName);
+		Master secondStrain = yeastSerivce.getStrain(secondStrainName);
+		
 		//adding text and catch if strain is not found
+		
 		try {
 			Paragraph strainOnePara = new Paragraph(100, firstStrain.toString(),f);
 			strainOnePara.setAlignment(Element.ALIGN_CENTER);
 			document.add(strainOnePara); 
 			}
 		catch (NullPointerException e){
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Strain 1 not found", e);
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Strain 1 not found:" + firstStrainName, e);
 		}
 
 		
@@ -87,7 +95,7 @@ public class PdfService {
 			document.add(strainTwoPara); 
 			}
 		catch (NullPointerException e){
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Strain 2 not found", e);
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Strain 2 not found:" + secondStrainName, e);
 		}
 		
 		
@@ -121,9 +129,9 @@ public class PdfService {
 			if (!cross.getFirstStrainName().isEmpty() && !cross.getSecondStrainName().isEmpty()) {
 				String firstStrainName = cross.getFirstStrainName();
 				String secondStrainName = cross.getSecondStrainName();
-				Master firstStrain = yeastSerivce.getStrain(firstStrainName);
-				Master secondStrain = yeastSerivce.getStrain(secondStrainName);
-				ByteArrayOutputStream curPage = this.append(firstStrain, secondStrain);
+				//generate one page of cross template using the append helper method
+				ByteArrayOutputStream curPage = this.append(firstStrainName, secondStrainName);
+				//put the new page in the master pdf document
 				PdfReader reader = new PdfReader(curPage.toByteArray());
 				PdfImportedPage page = writer.getImportedPage(reader, 1); 
 				document.newPage();
