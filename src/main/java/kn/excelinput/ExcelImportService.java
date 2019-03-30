@@ -20,12 +20,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import kn.yeast.Master;
+import kn.yeast.YeastRepository;
 import kn.yeast.YeastService;
 
 @Service
 public class ExcelImportService {
 	@Autowired
 	private YeastService yeastService;
+	@Autowired
+	private YeastRepository yeastRepository;
 	
 	public Map<Integer, List<String>> readExcel(File f) throws IOException{
 		FileInputStream file = new FileInputStream(f);
@@ -72,8 +75,13 @@ public class ExcelImportService {
 				//make the strain
 				Master curStrain = new Master(name, mat, leu1, his2, ura4, ade6, addgeno);
 				System.out.println(curStrain.toString());
-				
-				
+//				if (yeastRepository.) {
+//					yeastRepository.save(curStrain);
+//				}
+//				else {
+//					System.out.println("Strain exists: " + name);
+//				}
+//				
 			}
 		}
 	}
