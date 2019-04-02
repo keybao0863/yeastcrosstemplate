@@ -26,7 +26,7 @@ import com.itextpdf.text.pdf.PdfImportedPage;
 import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.PdfWriter;
 
-import kn.hello.Cross;
+import kn.crosstemplate.Cross;
 import kn.yeast.Master;
 import kn.yeast.YeastService;
 

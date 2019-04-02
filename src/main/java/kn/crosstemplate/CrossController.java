@@ -1,4 +1,4 @@
-package kn.hello;
+package kn.crosstemplate;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

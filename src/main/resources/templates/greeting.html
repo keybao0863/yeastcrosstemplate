@@ -76,7 +76,31 @@
         <p>Additional Genotype: <input type="text" th:field="*{additionalGenotype}" /></p>
         
         <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
     
+<!--      Adding strain by uploading a excel file  -->
     
+    <h1 align="center">Upload using excel template</h1>
+    <div style="padding-left: 40%">	
+    <p style="text-indent: 0%">Please click on the following link to download a template for adding strains. After entering strain information in the template, please
+     upload the file below</p>
+<!--     	offer download for template -->
+	    <a href="#" th:href="@{/downloadsample}">
+			download sample file
+		</a>
+		<br>
+		<br>
+<!-- 		ask user to upload file -->
+	    <form action="#" th:action="@{/uploadexcel}"
+			enctype="multipart/form-data" method="post">
+			<input type="file" name="file" accept=".xls,.xlsx" /> <input
+				type="submit" value="Upload file" />
+		</form>
+	
+	
+	
+	</div>
+
+
 </body>
 </html>	
