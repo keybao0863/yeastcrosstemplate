@@ -48,9 +48,17 @@ public class ExcelImportController {
 	
 	@GetMapping("/downloadsample")
 	public ResponseEntity<byte[]> downloadsample() throws DocumentException, IOException {
-    	FileInputStream in = new FileInputStream("src/sample.xlsx");
-    	byte[] output = in.readAllBytes();
-    	
+//    	FileInputStream in = new FileInputStream("src/sample.xlsx");
+//    	byte[] output = in.readAllBytes();
+//    	
+//    	
+    	 File file = new File("src/sample.xlsx");
+    	  //init array with file length
+    	  byte[] output = new byte[(int) file.length()]; 
+
+    	  FileInputStream fis = new FileInputStream(file);
+    	  fis.read(output); //read file into bytes[]
+    	  fis.close();
     	//
     	 HttpHeaders headers = new HttpHeaders();
     	    headers.setContentType(MediaType.parseMediaType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"));
@@ -60,7 +68,7 @@ public class ExcelImportController {
     	    headers.setCacheControl("must-revalidate, post-check=0, pre-check=0");
     	    
     	//
-    	in.close();
+    	
     	ResponseEntity<byte[]> response = new ResponseEntity<>(output, headers, HttpStatus.OK);
         return response;
     }
