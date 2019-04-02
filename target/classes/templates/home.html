@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+   	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Welcome!</title>
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  </head>
+  <body>
+    ...
+    <div th:replace="fragments/header :: header">
+      
+      <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Static header</a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Home</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="container">
+      <div class="jumbotron">
+        <h1 style="font-size: 40px">Yeast Cross Template Generator</h1>
+        <p>
+          Welcome to yeast cross template generator!!!
+        </p>
+        
+      </div>
+<!--       <div th:replace="fragments/footer :: footer">&copy; 2016 The Static Templates</div> -->
+    </div>
+    ...
+  </body>
+</html>

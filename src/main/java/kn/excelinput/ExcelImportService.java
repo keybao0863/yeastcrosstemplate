@@ -2,6 +2,7 @@ package kn.excelinput;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -30,7 +31,8 @@ public class ExcelImportService {
 	@Autowired
 	private YeastRepository yeastRepository;
 	
-	public Map<Integer, List<String>> readExcel(File f) throws IOException{
+	private Map<Integer, List<String>> readExcel(MultipartFile mf) throws IOException{
+		File f = convert(mf);
 		FileInputStream file = new FileInputStream(f);
 		Workbook workbook = new XSSFWorkbook(file);
 		
@@ -60,7 +62,8 @@ public class ExcelImportService {
 		return data;
 	}
 	
-	public void excelToStrain(Map<Integer, List<String>> data) {
+	private List<Master> excelToStrain(Map<Integer, List<String>> data) {
+		List<Master> ret = new ArrayList<Master>();
 		//iterate through rows of data
 		for (int i : data.keySet()) {
 			if (i!=0) {
@@ -74,14 +77,43 @@ public class ExcelImportService {
 				String addgeno = curRowData.get(6);
 				//make the strain
 				Master curStrain = new Master(name, mat, leu1, his2, ura4, ade6, addgeno);
+				ret.add(curStrain);
 				System.out.println(curStrain.toString());
-//				if (yeastRepository.) {
+//				if (yeastRepository.findByName(name)) {
 //					yeastRepository.save(curStrain);
 //				}
 //				else {
 //					System.out.println("Strain exists: " + name);
 //				}
-//				
+////				
+			}
+		}
+		return ret;
+	}
+	
+	//convert multipartfile to file
+	private File convert(MultipartFile file) throws IOException
+	{    
+	    File convFile = new File(file.getOriginalFilename());
+	    convFile.createNewFile(); 
+	    FileOutputStream fos = new FileOutputStream(convFile); 
+	    fos.write(file.getBytes());
+	    fos.close(); 
+	    return convFile;
+	}
+	
+	public void excelToDatabase(MultipartFile mf) throws IOException {
+		Map<Integer, List<String>> data = readExcel(mf);
+		List<Master> strainList = excelToStrain(data);
+		
+		//add strain to database
+		for (Master m: strainList) {
+			try {
+				yeastRepository.save(m);
+				System.out.println("strain added" + m.getName());
+			}
+			catch (Exception e) {
+				System.out.println("exception");
 			}
 		}
 	}
