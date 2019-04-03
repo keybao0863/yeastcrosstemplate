@@ -27,7 +27,7 @@
     
     
 <body>
-	<h1 align="center">Input strain information to be added to the database</h1>
+	<h1 style="padding-left: 20%">1. Input strain information to be added to the database</h1>
 	
     <form action="#" th:action="@{/addstrain}" th:object="${strain}" method="post">
         <p>Strain name: <input type="text" th:field="*{name}" /></p>
@@ -80,8 +80,10 @@
     
 <!--      Adding strain by uploading a excel file  -->
     
-    <h1 align="center">Upload using excel template</h1>
-    <div style="padding-left: 40%">	
+    <h1 style="padding-left: 20%">2. Upload using excel template</h1>
+    
+    
+    <div style="padding-left: 20%">	
     <p style="text-indent: 0%">Please click on the following link to download a template for adding strains. After entering strain information in the template, please
      upload the file below</p>
 <!--     	offer download for template -->
@@ -93,8 +95,11 @@
 <!-- 		ask user to upload file -->
 	    <form action="#" th:action="@{/uploadexcel}"
 			enctype="multipart/form-data" method="post">
-			<input type="file" name="file" accept=".xls,.xlsx" /> <input
-				type="submit" value="Upload file" />
+			<br>
+			<h2 style="font-size=20px"> Upload excel to add strains </h2>
+			<input type="file" name="file" accept=".xls,.xlsx" />
+			<br>
+			 <input	type="submit" value="Upload file" />
 		</form>
 	
 	
