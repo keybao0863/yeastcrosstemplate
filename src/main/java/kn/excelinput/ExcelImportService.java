@@ -13,6 +13,7 @@ import java.util.Map;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Row.MissingCellPolicy;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -47,9 +48,14 @@ public class ExcelImportService {
 		for (Row row : sheet) {
 						
 		    data.put(i, new ArrayList<String>());
-		    for (Cell cell : row) {
+		    for (int nRow=0; nRow <7; nRow++) {
+		    	//if cell is null, create a blank cell
+		    	Cell cell = row.getCell(nRow, MissingCellPolicy.CREATE_NULL_AS_BLANK);
+
 		    	if (cell.getCellType()==CellType.STRING || cell.getCellType()==CellType.BLANK) {
-		    		data.get(i).add(cell.getRichStringCellValue().getString());
+		    		data.get(i).add(cell.getStringCellValue());
+	    		
+		    		
 		    	}
 		    	else {
 		    		System.out.println("Wrong type!");
@@ -68,6 +74,9 @@ public class ExcelImportService {
 		for (int i : data.keySet()) {
 			if (i!=0) {
 				List<String> curRowData = data.get(i);
+				//testing
+				System.out.println(curRowData.toString());
+		
 				String name = curRowData.get(0);
 				String mat = curRowData.get(1);
 				String leu1 = curRowData.get(2);
@@ -78,7 +87,7 @@ public class ExcelImportService {
 				//make the strain
 				Master curStrain = new Master(name, mat, leu1, his2, ura4, ade6, addgeno);
 				ret.add(curStrain);
-				System.out.println(curStrain.toString());
+				//System.out.println(curStrain.toString());
 //				if (yeastRepository.findByName(name)) {
 //					yeastRepository.save(curStrain);
 //				}
