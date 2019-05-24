@@ -1,0 +1,66 @@
+<!DOCTYPE heml>
+<html  xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+	
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Yeast Tables</title>
+<!-- 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
+<!-- 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+	<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+	<script src="/js/datatable.js"></script>
+</head>
+
+
+<div th:replace="fragments/header :: header">
+      
+      <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Static header</a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Home</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+<body>
+<div class="container" style="margin-top:5%;">
+    <table id="yeastTable" >
+        <thead>
+            <tr>
+           		 <th>id</th>
+                <th>Name</th>
+                <th>Mat</th>
+                <th>leu1</th>
+                <th>his2</th>
+                <th>ura4</th>
+                <th>ade6</th>
+                <th>Additional Genotypes</th>
+            </tr>
+        </thead>
+<!--         <tbody> -->
+<!--             <tr> -->
+<!--                 <td th:text="${strain?.name}">1</td> -->
+<!--                 <td th:text="${strain?.mat}">Doe</td> -->
+<!--                 <td th:text="${strain?.leu1}">John</td> -->
+<!--                 <td th:text="${strain?.his2}">1</td> -->
+<!--                 <td th:text="${strain?.ura4}">Doe</td> -->
+<!--                 <td th:text="${strain?.ade6}">John</td> -->
+<!--                 <td th:text="${strain?.additionalGenotype}">John</td> -->
+                
+<!--             </tr> -->
+<!--         </tbody> -->
+    </table>
+</div>
+</body>
+</html>
