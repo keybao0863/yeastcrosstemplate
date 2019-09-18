@@ -47,4 +47,9 @@ public class YeastController {
 		return "success";
 		
 	}
+	
+	@GetMapping("/login")
+    public String loginForm(Model model) {
+        return "login";
+    }
 }
