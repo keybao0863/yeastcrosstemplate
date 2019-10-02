@@ -6,7 +6,17 @@
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-	<link rel="stylesheet" th:href="@{/appstyle.css}"/>
+	
+	<style>
+		body { 
+    		padding-top: 65px; 
+			}
+
+		p{
+			text-indent: 20%;
+			}
+	
+	</style>
 </head>	
 
 <div th:replace="fragments/header :: header">
@@ -27,7 +37,8 @@
     
     
 <body>
-	<h1 style="padding-left: 20%">1. Input strain information to be added to the database</h1>
+	<h1 style="padding-left: 20%">There are two options to add strains:</h1>
+	<h2 style="padding-left: 20%">1. Manual input</h2>
 	
     <form action="#" th:action="@{/addstrain}" th:object="${strain}" method="post">
         <p>Strain name: <input type="text" th:field="*{name}" /></p>
@@ -75,12 +86,12 @@
         
         <p>Additional Genotype: <input type="text" th:field="*{additionalGenotype}" /></p>
         
-        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+        <p><input type="submit" value="Submit" class="btn btn-success btn-sm"/> <input type="reset" class="btn btn-warning btn-sm" value="Reset" /></p>
     </form>
     
 <!--      Adding strain by uploading a excel file  -->
     
-    <h1 style="padding-left: 20%">2. Upload using excel template</h1>
+    <h2 style="padding-left: 20%">2. Upload using excel template</h2>
     
     
     <div style="padding-left: 20%">	
@@ -96,10 +107,10 @@
 	    <form action="#" th:action="@{/uploadexcel}"
 			enctype="multipart/form-data" method="post">
 			<br>
-			<h2 style="font-size=20px"> Upload excel to add strains </h2>
+			<h3 style="font-size=20px"> Upload excel to add strains </h3>
 			<input type="file" name="file" accept=".xls,.xlsx" />
 			<br>
-			 <input	type="submit" value="Upload file" />
+			 <input	type="submit" class="btn btn-success btn-sm" value="Upload file" />
 		</form>
 	
 	
