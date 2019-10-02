@@ -1,10 +1,44 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+      
     <head>
-        <title>Spring Security Example </title>
+        <title>Login </title>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+		<style>
+		
+		#mainbox{
+  			width:800px;
+  			margin:auto;
+  			padding-left:200px;
+  			padding:200px 0;
+}
+		</style>
     </head>
-    <body>
+    
+    <div th:replace="fragments/header :: header">
+      
+      <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Static header</a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Home</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    <div id='mainbox'>
+    	<div>
+    	Please log in to view strain information.
+    	</div>
         <div th:if="${param.error}">
             Invalid username and password.
         </div>
@@ -12,9 +46,10 @@
             You have been logged out.
         </div>
         <form th:action="@{/login}" method="post">
-            <div><label> User Name : <input type="text" name="username"/> </label></div>
+            <div><label> Username: <input type="text" name="username"/> </label></div>
             <div><label> Password: <input type="password" name="password"/> </label></div>
-            <div><input type="submit" value="Sign In"/></div>
+            <div><input class="btn btn-primary" type="submit" value="Sign In"/></div>
         </form>
-    </body>
+  
+  </div>
 </html>
