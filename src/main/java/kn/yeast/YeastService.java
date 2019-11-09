@@ -27,11 +27,25 @@ public class YeastService {
 	}
 
 	public void addStrain(Master s) {
+		//if already there, update
+		if(yeastRepository.findByName(s.getName())!=null) {
+			Master toUpdate = yeastRepository.findByName(s.getName());
+			toUpdate.setName(s.getName());
+			toUpdate.setHis2(s.getHis2());
+			toUpdate.setAde6(s.getAde6());
+			toUpdate.setLeu1(s.getLeu1());
+			toUpdate.setUra4(s.getUra4());
+			toUpdate.setMat(s.getMat());
+			toUpdate.setAdditionalGenotype(s.getAdditionalGenotype());
+			yeastRepository.save(toUpdate);
+		}
 		
-		yeastRepository.save(s);
+		//else save
+		else {
+			yeastRepository.save(s);	
+		}
+		}
 		
-		
-	}
 
 	public Master getStrain(String strainName) {
 		// TODO Auto-generated method stub
