@@ -15,9 +15,6 @@ public class YeastmanagerApplication {
 	
 	public static void main(String[] args) throws DocumentException, IOException {
 		SpringApplication.run(YeastmanagerApplication.class, args);
-		System.out.println("started");
-//		AppendPdf appendPdf = new AppendPdf();
-//		appendPdf.append();
 	}
 
 }

@@ -34,17 +34,12 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 @Service
 public class PdfService {
-	
-//	private Strain strainOne = new Strain("Br172", "smt0","leu1","his2","ura4","ade6-210"," ");
-//	private Strain strainTwo = new Strain("SPJ1577", "h+","leu1","","ura4","ade6-210"," ");
+
 	@Autowired
 	private YeastService yeastSerivce;
 	
 	
-	private ByteArrayOutputStream append(String firstStrainName, String secondStrainName) throws DocumentException, IOException {
-		
-		
-		
+	private ByteArrayOutputStream append(String firstStrainName, String secondStrainName) throws DocumentException, IOException {		
 		// Create output PDF
 		Document document = new Document(PageSize.A4);
 		
@@ -88,7 +83,6 @@ public class PdfService {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Strain 1 not found:" + firstStrainName, e);
 		}
 
-		
 		try {
 			Paragraph strainTwoPara = new Paragraph(23, secondStrain.toString(),f);
 			strainTwoPara.setAlignment(Element.ALIGN_CENTER);
@@ -97,10 +91,7 @@ public class PdfService {
 		catch (NullPointerException e){
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Strain 2 not found:" + secondStrainName, e);
 		}
-		
-		
-		
-		
+
 		document.close();
 		
 		return output;

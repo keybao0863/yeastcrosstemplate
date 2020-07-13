@@ -30,7 +30,7 @@ public class YeastController {
     public String greetingForm(Model model) {
     	Master newStrain = new Master();
         model.addAttribute("strain", newStrain);
-        return "greeting";
+        return "addStrain";
     }
 	
 	@PostMapping("/addstrain")

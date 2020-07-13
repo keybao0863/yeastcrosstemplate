@@ -19,7 +19,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
             .authorizeRequests()
             	.requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                .antMatchers("/", "/home", "/addstrain", "/crosstemplate", "/resources/static/appstyle.css").permitAll()
+                .antMatchers("/", "/home", "/addstrain", "/crosstemplate", "/resources/static/appstyle.css", "/uploadexcel", "/downloadsample").permitAll()
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
@@ -35,8 +35,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public UserDetailsService userDetailsService() {
         UserDetails user =
-             User.withDefaultPasswordEncoder()
-                .username("sjlab")
+             User.withUsername("sjlab")
                 .password("pombe123")
                 .roles("USER")
                 .build();

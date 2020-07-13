@@ -40,7 +40,6 @@ public class ExcelImportController {
 	    model.addAttribute("message", "File: " + file.getOriginalFilename() 
 	      + " has been uploaded successfully!");
 	    
-	    //testing
 	    excelImportService.excelToDatabase(file);
 	    
 	    return "success";

@@ -74,9 +74,6 @@ public class ExcelImportService {
 		for (int i : data.keySet()) {
 			if (i!=0) {
 				List<String> curRowData = data.get(i);
-				//testing
-				System.out.println(curRowData.toString());
-		
 				String name = curRowData.get(0);
 				String mat = curRowData.get(1);
 				String leu1 = curRowData.get(2);
@@ -87,14 +84,7 @@ public class ExcelImportService {
 				//make the strain
 				Master curStrain = new Master(name, mat, leu1, his2, ura4, ade6, addgeno);
 				ret.add(curStrain);
-				//System.out.println(curStrain.toString());
-//				if (yeastRepository.findByName(name)) {
-//					yeastRepository.save(curStrain);
-//				}
-//				else {
-//					System.out.println("Strain exists: " + name);
-//				}
-////				
+	
 			}
 		}
 		return ret;
